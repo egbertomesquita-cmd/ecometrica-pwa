@@ -1,4 +1,4 @@
-const CACHE = "ecometrica-v3";
+const CACHE = "ecometrica-v4";
 const ASSETS = ["./", "./index.html", "./styles.css", "./footer.css", "./app.js", "./manifest.webmanifest", "./icons/icon.svg", "./icons/decb-uern.png"];
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS))));
 self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))));
