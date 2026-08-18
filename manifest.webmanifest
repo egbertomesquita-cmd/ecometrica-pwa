@@ -1,0 +1,14 @@
+{
+  "name": "EcoMétrica — Plataforma Cienciométrica",
+  "short_name": "EcoMétrica",
+  "description": "Revisão sistemática e análise cienciométrica sobre espécies exóticas invasoras em ambientes aquáticos da Caatinga.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f3",
+  "theme_color": "#166534",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
