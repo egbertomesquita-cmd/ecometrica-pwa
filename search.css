@@ -4,3 +4,9 @@
 .nested-filter{grid-column:1/-1;margin-top:12px;padding-top:14px;border-top:1px solid var(--line)}.nested-filter h3{margin:0 0 12px;color:#24442e;font-size:.92rem}.aquatic-grid{grid-template-columns:repeat(3,1fr)}.continental-grid{grid-template-columns:repeat(4,1fr)}
 @media(max-width:1100px){.search-builder{grid-template-columns:1fr}.refinements{position:static}.geo-options{grid-template-columns:1fr}}
 @media(max-width:700px){.database-choice{grid-template-columns:1fr auto}.database-choice a{grid-column:1/-1;margin-left:32px}.biome-grid,.organism-grid,.aquatic-grid,.continental-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* Mantém os campos do recorte temporal legíveis dentro do painel lateral. */
+.refinements .two-col{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.refinements .two-col .field{min-width:0;margin:6px 0}
+.refinements .two-col label{display:block;line-height:1.25;white-space:normal}
+.refinements .two-col input{min-width:0;width:100%}
