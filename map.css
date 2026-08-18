@@ -1,0 +1,58 @@
+.species-map-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.species-map-panel { display: grid; gap: 20px; }
+.map-year-grid { grid-template-columns: 1fr 1fr; }
+.map-search-button { width: 100%; }
+.quick-species { border-top: 1px solid var(--line); padding-top: 18px; }
+.quick-species h2 { font-size: 1.05rem; margin-bottom: 4px; }
+.quick-species-button {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff;
+  color: var(--text); padding: 10px 12px; margin-top: 7px; text-align: left;
+}
+.quick-species-button:hover, .quick-species-button:focus-visible {
+  border-color: #f97316; background: #fff7ed; outline: none;
+}
+.map-legend { display: flex; gap: 15px; flex-wrap: wrap; font-size: .78rem; color: var(--muted); }
+.map-legend span { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.legend-dot.manual { background: #0f766e; }
+.legend-dot.quick { background: #f97316; }
+.map-quality { font-size: .8rem; }
+.species-map-area { min-width: 0; }
+.map-status {
+  min-height: 58px; display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap; background: #ecfdf5; border: 1px solid #a7f3d0;
+  border-left: 5px solid #0f766e; border-radius: 13px 13px 0 0; padding: 12px 16px; color: #134e4a;
+}
+.map-status.quick { background: #fff7ed; border-color: #fed7aa; border-left-color: #f97316; color: #9a3412; }
+.map-status.loading { animation: map-pulse 1.2s ease-in-out infinite; }
+.map-status.error { background: #fff1f2; border-color: #fecdd3; border-left-color: var(--danger); color: var(--danger); }
+#species-map {
+  height: clamp(480px, 67vh, 760px); width: 100%; background: #dce9e1;
+  border: 1px solid var(--line); border-top: 0; border-radius: 0 0 13px 13px;
+  box-shadow: var(--shadow); z-index: 0;
+}
+.map-attribution-note { text-align: right; color: var(--muted); font-size: .72rem; margin-top: 6px; }
+.occurrence-popup { font-size: .82rem; min-width: 210px; }
+.occurrence-popup > b { display: block; font-size: .96rem; margin-bottom: 8px; color: #134e4a; }
+.occurrence-popup dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 9px; margin: 0 0 9px; }
+.occurrence-popup dt { font-weight: 700; }
+.occurrence-popup dd { margin: 0; }
+.occurrence-popup a { color: var(--green); font-weight: 700; }
+@keyframes map-pulse { 50% { opacity: .68; } }
+@media (max-width: 1050px) {
+  .species-map-layout { grid-template-columns: 1fr; }
+  .species-map-panel { grid-template-columns: minmax(240px, .8fr) minmax(300px, 1.2fr); }
+  .map-legend, .map-quality { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .species-map-panel { grid-template-columns: 1fr; }
+  .map-legend, .map-quality { grid-column: auto; }
+  .map-status { align-items: flex-start; flex-direction: column; }
+  #species-map { height: 62vh; min-height: 420px; }
+}
