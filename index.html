@@ -19,12 +19,22 @@
   <link rel="stylesheet" href="flow.css?v=37" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <title>EcoMétrica</title>
+  <script>
+    (() => {
+      if (!/(?:access_token|refresh_token)=/.test(location.hash)) return;
+      const params = new URLSearchParams(location.hash.slice(1));
+      window.__ECOMETRICA_OAUTH = {
+        access_token: params.get("access_token"),
+        refresh_token: params.get("refresh_token")
+      };
+      history.replaceState(null, "", `${location.pathname}${location.search}#/auth-callback`);
+    })();
+  </script>
 </head>
 <body>
   <div id="app" aria-live="polite"></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script type="module" src="app.js?v=46"></script>
+  <script type="module" src="app.js?v=47"></script>
 </body>
 </html>
