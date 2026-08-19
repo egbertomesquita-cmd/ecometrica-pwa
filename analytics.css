@@ -28,3 +28,22 @@
 .bradford-table{max-height:430px;overflow:auto}
 @media(max-width:760px){.bradford-zones{grid-template-columns:1fr}.science-network{min-height:280px}.annual-column{min-width:42px}.analytics-title h2{font-size:1.25rem}}
 @media print{.analytics-section{break-inside:avoid}.science-network{min-height:0}.bradford-table{max-height:none}}
+.vos-workflow{display:grid;grid-template-columns:minmax(320px,.8fr) minmax(420px,1.2fr);gap:18px;align-items:start}
+.vos-control-card,.vos-preview-card,.vos-online-card{min-width:0}
+.vos-step{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
+.vos-step>span{width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:#166534;color:#fff;display:grid;place-items:center;font-weight:850}
+.vos-step h2{font:700 1.35rem Georgia,serif;margin:2px 0 4px;color:#173f2a}
+.vos-step p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.45}
+.vos-control-card .vos-step:not(:first-child){margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+.vos-file-status{margin-top:10px;min-height:30px;padding:8px 10px;border:1px dashed var(--line);border-radius:9px;color:var(--muted);font-size:.82rem}
+.vos-generate{width:100%;margin-top:16px;min-height:48px}
+.vos-preview-card{position:sticky;top:12px}
+.vos-preview-empty{min-height:420px;display:grid;place-content:center;gap:7px;text-align:center;color:var(--muted);background:radial-gradient(circle at center,#f8fcf9,#eef5f0);border:1px dashed var(--line);border-radius:12px}
+.vos-preview-empty b{color:#173f2a;font-size:1.05rem}
+.vos-ready{margin-top:16px}.vos-ready .actions{margin-top:12px}
+.vos-online-card{margin-top:20px;padding:0;overflow:hidden}
+.vos-online-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 20px 4px}
+.vos-online-card iframe{display:block;width:100%;height:720px;border:0;border-top:1px solid var(--line);background:#f5f7f5}
+.vos-privacy{margin:0;padding:10px 20px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--line)}
+@media(max-width:980px){.vos-workflow{grid-template-columns:1fr}.vos-preview-card{position:static}.vos-online-head{flex-direction:column}.vos-online-card iframe{height:620px}}
+@media(max-width:600px){.vos-preview-empty{min-height:300px}.vos-online-card iframe{height:520px}}
