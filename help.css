@@ -1,0 +1,24 @@
+.help-open { overflow: hidden; }
+.help-overlay { position: fixed; inset: 0; z-index: 80; background: rgba(7, 18, 11, .55); backdrop-filter: blur(3px); animation: help-fade .18s ease; }
+.help-drawer { position: absolute; top: 0; right: 0; width: min(520px, 94vw); height: 100%; background: #fff; box-shadow: -18px 0 50px rgba(8, 32, 17, .2); display: flex; flex-direction: column; animation: help-slide .24s ease; }
+.help-header { min-height: 76px; padding: 0 24px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; color: var(--green); }
+.help-header>div { display: flex; align-items: center; gap: 10px; letter-spacing: .05em; }
+.help-header>div span { width: 28px; height: 28px; display: grid; place-items: center; border: 2px solid currentColor; border-radius: 50%; font-weight: 850; }
+.help-header button { border: 0; background: transparent; color: var(--text); width: 42px; height: 42px; border-radius: 50%; font-size: 1.8rem; line-height: 1; }
+.help-header button:hover { background: #eff6f0; }
+.help-body { overflow: auto; padding: 30px 34px 38px; }
+.help-body h2 { margin: 12px 0 8px; color: #173f2a; font: 750 2rem Georgia, serif; }
+.help-intro { color: var(--muted); line-height: 1.65; margin: 0 0 24px; }
+.help-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 23px; }
+.help-steps li { display: grid; grid-template-columns: 38px 1fr; gap: 14px; align-items: start; }
+.help-steps li>span { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green); font-weight: 850; }
+.help-steps b { display: block; color: var(--text); font-size: 1rem; margin: 4px 0 5px; }
+.help-steps p { margin: 0; color: #68816f; line-height: 1.6; }
+.help-tip { margin-top: 30px; padding: 20px; border: 1px solid #f5cf58; border-radius: 14px; background: #fffbeb; color: #8a3d08; }
+.help-tip b { display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .04em; }
+.help-tip p { margin: 0; line-height: 1.65; }
+.help-trigger { white-space: nowrap; }
+@keyframes help-fade { from { opacity: 0; } }
+@keyframes help-slide { from { transform: translateX(100%); } }
+@media(max-width:760px){.help-body{padding:24px 20px 32px}.help-header{padding:0 18px}.topbar .help-trigger{padding:7px 9px;font-size:0}.topbar .help-trigger::after{content:"?";font-size:.9rem}}
+@media(prefers-reduced-motion:reduce){.help-overlay,.help-drawer{animation:none}}
