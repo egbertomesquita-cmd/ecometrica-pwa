@@ -15,6 +15,16 @@
 .network-edges line{stroke:#8fa59a;stroke-opacity:.56}
 .network-nodes circle{stroke:#fff;stroke-width:2;opacity:.9}
 .network-nodes text{font-size:11px;fill:#26372d;font-weight:650;paint-order:stroke;stroke:#f8fcf9;stroke-width:3px;stroke-linejoin:round}
+.network-node{cursor:pointer;outline:none;transition:opacity .18s ease}
+.network-node circle,.network-node text,.network-edge{transition:opacity .18s ease,stroke-width .18s ease,filter .18s ease,transform .18s ease;transform-box:fill-box;transform-origin:center}
+.science-network.is-focused .network-node:not(.is-active):not(.is-neighbor){opacity:.16}
+.science-network.is-focused .network-edge:not(.is-active){opacity:.1}
+.network-node.is-neighbor{opacity:.72}
+.network-node.is-active circle{stroke:#102b1a;stroke-width:4;filter:drop-shadow(0 4px 7px rgba(15,45,26,.3));transform:scale(1.12)}
+.network-node.is-active text{font-size:13px;font-weight:850}
+.network-edge.is-active{stroke:#173f2a;stroke-opacity:.95!important}
+.network-focus-label{min-height:26px;margin:8px auto 0;text-align:center;color:var(--muted);font-size:.8rem}
+.network-focus-label b{color:#173f2a}
 .network-legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:.74rem;padding:8px}
 .network-empty{min-height:240px;display:grid;place-items:center;text-align:center;color:var(--muted);background:#f8faf8;border:1px dashed var(--line);border-radius:12px}
 .bradford-zones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
