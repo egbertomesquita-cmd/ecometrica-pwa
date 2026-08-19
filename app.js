@@ -1,4 +1,4 @@
-// EcoMétrica 3.0 — versão 33
+// EcoMétrica 3.0 — versão 34
 const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const uid = () => crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
@@ -120,6 +120,12 @@ const portugueseTerms=new Set([
 function languageTerms(terms,lang){if(lang==="both")return [...new Set(terms)];return [...new Set(terms.filter(t=>lang==="pt"?portugueseTerms.has(t):!portugueseTerms.has(t)))]}
 function quote(t){return /\s/.test(t)?`"${t}"`:t}
 function buildQuery(selected,op){return selected.map(id=>`(${groups[id][1].map(quote).join(" OR ")})`).join(` ${op} `)}
+function openAlexQuery(query){return query.replace(/"([^"\n]*[*?][^"\n]*)"/g,(_,phrase)=>`"${phrase}"~3`)}
+function databaseExecutionUrl(id,baseUrl,query,y1,y2){
+ if(id!=="openalex")return baseUrl;
+ const params=new URLSearchParams({search:query,filter:`from_publication_date:${y1}-01-01,to_publication_date:${y2}-12-31`,sort:"relevance_score:desc"});
+ return `${baseUrl}/works?${params}`
+}
 function searchPage(){
  const project=activeProject(),defaultDbs=project?.selected_databases?.length?project.selected_databases:["wos","scopus","openalex","scielo","scholar"];
  const descriptorCards=Object.entries(groups).filter(([id])=>!["caatinga","rn"].includes(id)).map(([id,g],i)=>`${i?`<div class="operator-row" role="group" aria-label="Operador antes de ${g[0]}">${["AND","OR","NOT"].map(op=>`<label><input type="radio" name="op_${id}" value="${op}" ${op==="AND"?"checked":""}><span>${op}</span></label>`).join("")}</div>`:""}<label class="search-choice descriptor-choice"><input type="checkbox" name="group" value="${id}" ${id==="invasive"?"checked":""}><span class="choice-indicator"></span><span><b>${g[0]}</b><small>${g[1].join(", ")}</small></span></label>`).join("");
@@ -148,7 +154,7 @@ function renderStrategies(form){
   const environmentTerms=languageTerms(rawEnvironment,lang);q+=` AND (${[...new Set(geoTerms)].map(quote).join(" OR ")}) AND (${organismTerms.map(quote).join(" OR ")}) AND (${environmentTerms.map(quote).join(" OR ")})`
  }
  const generatedQueries={};
- const cards=dbs.map(id=>{const [name,url,tpl,,access]=databases[id],dbQuery=id==="scopus"?q.replaceAll(" NOT "," AND NOT "):q,out=tpl.replace("{Q}",dbQuery).replace("{Y1}",y1).replace("{Y2}",y2).replace("{YM1}",y1-1).replace("{YP1}",y2+1);generatedQueries[id]=out;return `<article class="card strategy-card" data-db="${id}"><div class="toolbar" style="justify-content:space-between"><h3>${name}</h3><span class="badge ${access==="Gratuito"?"green":"amber"}">${access}</span></div><div class="strategy" contenteditable="true">${esc(out)}</div><div class="toolbar"><button class="btn btn-outline btn-sm copy-strategy" type="button">Copiar string</button><a class="btn btn-outline btn-sm" href="${url}" target="_blank" rel="noopener">Executar na base ↗</a></div></article>`}).join("");
+ const cards=dbs.map(id=>{const [name,url,tpl,,access]=databases[id],dbQuery=id==="scopus"?q.replaceAll(" NOT "," AND NOT "):id==="openalex"?openAlexQuery(q):q,out=tpl.replace("{Q}",dbQuery).replace("{Y1}",y1).replace("{Y2}",y2).replace("{YM1}",y1-1).replace("{YP1}",y2+1),executionUrl=databaseExecutionUrl(id,url,out,y1,y2),compatibility=id==="openalex"?'<p class="notice"><b>Compatibilidade OpenAlex:</b> curingas em frases foram convertidos para busca por proximidade e o período será aplicado como filtro da base.</p>':"";generatedQueries[id]=out;return `<article class="card strategy-card" data-db="${id}"><div class="toolbar" style="justify-content:space-between"><h3>${name}</h3><span class="badge ${access==="Gratuito"?"green":"amber"}">${access}</span></div>${compatibility}<div class="strategy" contenteditable="true">${esc(out)}</div><div class="toolbar"><button class="btn btn-outline btn-sm copy-strategy" type="button">Copiar string</button><a class="btn btn-outline btn-sm" href="${esc(executionUrl)}" target="_blank" rel="noopener">Executar na base ↗</a></div></article>`}).join("");
  lastGeneratedStrategy={geography:f.get("geography"),biome:f.get("biome")||null,state_code:f.get("state")||null,organism:f.get("organism")||null,environment:f.get("environment")||null,aquatic_type:f.get("aquatic_type")||null,continental_type:f.get("continental_type")||null,language:lang,start_year:y1,end_year:y2,descriptor_groups:sel.map(id=>({id,operator:f.get(`op_${id}`)||"AND"})),selected_databases:dbs,generated_queries:generatedQueries};
  const saveButton=activeProject()?`<button id="save-strategy" class="btn btn-primary" type="button">Salvar no projeto</button>`:`<button class="btn btn-outline" type="button" data-go="projects">Criar projeto para salvar</button>`;
  $("#strategies").innerHTML=`<div class="toolbar"><h2 style="margin-right:auto">Strings geradas</h2>${saveButton}<button id="export-strategies" class="btn btn-outline">Exportar TXT</button></div>${cards}`;$("#strategies").scrollIntoView({behavior:"smooth",block:"start"})
