@@ -23,6 +23,16 @@
   font-weight: 750;
   letter-spacing: .02em;
 }
+.footer-actions { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.footer-actions .footer-version { margin-top: 0; }
+.footer-cite-button { border: 0; background: transparent; color: var(--green); padding: 5px 9px; font-size: .74rem; font-weight: 750; text-decoration: underline; text-underline-offset: 3px; }
+.footer-cite-button:hover { color: #14532d; }
+.citation-modal-card { width: min(720px, 100%); max-height: 90vh; overflow: auto; }
+.citation-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.citation-heading h2 { margin: 8px 0 0; font-family: Georgia, serif; }
+.citation-close { border: 0; background: #eef4ef; color: var(--text); width: 36px; height: 36px; border-radius: 50%; font-size: 1.5rem; line-height: 1; }
+.citation-preview { white-space: pre-wrap; word-break: break-word; padding: 18px; margin: 16px 0; border: 1px solid var(--line); border-left: 4px solid var(--green); border-radius: 10px; background: #f7faf7; color: var(--text); font: .9rem/1.65 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.citation-note { display: block; margin-top: 14px; text-align: center; }
 
 .btn-google {
   width: 100%;
