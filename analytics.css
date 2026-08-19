@@ -48,6 +48,8 @@
 .vos-ready{margin-top:16px}.vos-ready .actions{margin-top:12px}
 .vos-online-card{margin-top:20px;padding:0;overflow:hidden}
 .vos-online-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 20px 4px}
+.vos-embed-placeholder{min-height:280px;margin:16px 20px 20px;border:1px dashed var(--line);border-radius:12px;background:radial-gradient(circle at center,#f8fcf9,#eef5f0);display:grid;place-content:center;text-align:center;gap:10px;color:var(--muted)}
+.vos-embed-placeholder b{color:#173f2a;font-size:1.05rem}
 .vos-online-card iframe{display:block;width:100%;height:720px;border:0;border-top:1px solid var(--line);background:#f5f7f5}
 .vos-privacy{margin:0;padding:10px 20px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--line)}
 @media(max-width:1180px){.vos-workflow{grid-template-columns:1fr}.vos-preview-card{position:static}.vos-online-head{flex-direction:column}.vos-online-card iframe{height:620px}}
