@@ -1,4 +1,4 @@
-// EcoMétrica 3.0 — versão 34
+// EcoMétrica 3.0 — versão 35
 const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const uid = () => crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
@@ -120,7 +120,7 @@ const portugueseTerms=new Set([
 function languageTerms(terms,lang){if(lang==="both")return [...new Set(terms)];return [...new Set(terms.filter(t=>lang==="pt"?portugueseTerms.has(t):!portugueseTerms.has(t)))]}
 function quote(t){return /\s/.test(t)?`"${t}"`:t}
 function buildQuery(selected,op){return selected.map(id=>`(${groups[id][1].map(quote).join(" OR ")})`).join(` ${op} `)}
-function openAlexQuery(query){return query.replace(/"([^"\n]*[*?][^"\n]*)"/g,(_,phrase)=>`"${phrase}"~3`)}
+function openAlexQuery(query){return query.replace(/(^|[\s(])"([^"\n]*[*?][^"\n]*)"/g,(_,prefix,phrase)=>`${prefix}"${phrase}"~3`)}
 function databaseExecutionUrl(id,baseUrl,query,y1,y2){
  if(id!=="openalex")return baseUrl;
  const params=new URLSearchParams({search:query,filter:`from_publication_date:${y1}-01-01,to_publication_date:${y2}-12-31`,sort:"relevance_score:desc"});
