@@ -24,8 +24,16 @@
   <title>EcoMétrica</title>
   <script>
     (() => {
-      if (!/(?:access_token|refresh_token)=/.test(location.hash)) return;
       const params = new URLSearchParams(location.hash.slice(1));
+      if (params.get("error") || params.get("error_code")) {
+        window.__ECOMETRICA_OAUTH_ERROR = {
+          code: params.get("error_code") || params.get("error"),
+          description: params.get("error_description") || "O Google não concluiu a autenticação."
+        };
+        history.replaceState(null, "", `${location.pathname}${location.search}#/login`);
+        return;
+      }
+      if (!params.get("access_token") || !params.get("refresh_token")) return;
       window.__ECOMETRICA_OAUTH = {
         access_token: params.get("access_token"),
         refresh_token: params.get("refresh_token")
@@ -38,6 +46,6 @@
   <div id="app" aria-live="polite"></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script type="module" src="app.js?v=69"></script>
+  <script type="module" src="app.js?v=70"></script>
 </body>
 </html>
