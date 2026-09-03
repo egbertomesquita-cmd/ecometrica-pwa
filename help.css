@@ -26,5 +26,5 @@
 .help-trigger { white-space: nowrap; }
 @keyframes help-fade { from { opacity: 0; } }
 @keyframes help-slide { from { transform: translateX(100%); } }
-@media(max-width:760px){.help-body{padding:24px 20px 32px}.help-header{padding:0 18px}.topbar .help-trigger{padding:7px 9px;font-size:0}.topbar .help-trigger::after{content:"?";font-size:.9rem}}
+@media(max-width:760px){.help-body{padding:24px 20px 32px}.help-header{padding:0 18px}.topbar .help-trigger{padding:7px 9px;font-size:.72rem}}
 @media(prefers-reduced-motion:reduce){.help-overlay,.help-drawer{animation:none}}
