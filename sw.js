@@ -1,4 +1,4 @@
-const CACHE = "ecometrica-v82";
+const CACHE = "ecometrica-v83";
 const APP_SHELL = "./index.html";
 const ASSETS = [
   "./",
