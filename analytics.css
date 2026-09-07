@@ -107,6 +107,7 @@
 .quality-guidance{display:grid;gap:10px;margin:16px 0}
 .quality-guidance-item{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px;border-radius:10px;border-left:5px solid #15803d;background:#f0fdf4}
 .quality-guidance-item.warn{border-color:#d97706;background:#fffbeb}.quality-guidance-item.bad{border-color:#dc2626;background:#fef2f2}
+.chart-export-tools{display:flex;align-items:center;justify-content:flex-end;gap:7px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}.chart-export-tools>span{margin-right:auto;color:var(--muted);font-size:.7rem;font-weight:750}.chart-export-canvas{box-sizing:border-box}.chart-export-canvas .annual-chart,.chart-export-canvas .bars,.chart-export-canvas .network-wrap,.chart-export-canvas .bradford-zones,.chart-export-canvas .lotka-chart{margin:0}.chart-export-canvas .science-network{min-height:0}@media(max-width:560px){.chart-export-tools{flex-wrap:wrap;justify-content:flex-start}.chart-export-tools>span{width:100%;margin:0}}
 .quality-issues{margin-top:16px}.quality-issues>.toolbar{justify-content:space-between;align-items:end}.quality-issues input{max-width:380px}
 .quality-issues td:first-child{min-width:300px}.quality-issues td:first-child small{display:block;margin-top:5px;color:var(--muted)}
 .quality-tags{display:flex;flex-wrap:wrap;gap:5px}.quality-tags .badge{font-size:.68rem}
