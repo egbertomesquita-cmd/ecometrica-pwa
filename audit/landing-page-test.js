@@ -8,6 +8,6 @@ assert.match(source,/02","Rastreabilidade","Fluxo PRISMA 2020"/,"O cartão do PR
 assert.match(source,/03","Resultados","Análise cienciométrica"/,"O cartão de análises deve possuir categoria própria.");
 assert.match(source,/04","Biodiversidade","Distribuição espacial"/,"O cartão espacial deve distinguir estudos e GBIF.");
 assert.doesNotMatch(source,/<span class="eyebrow">\$\{x\[0\]\}<\/span><b>\$\{x\[0\]\}/,"A página não deve repetir o mesmo título no cartão.");
-assert.match(source,/EcoMétrica 3\.0 · Versão 90/,"A versão pública deve ser 90.");
+assert.match(source,/EcoMétrica 3\.0 · Versão 91/,"A versão pública deve ser 91.");
 
 console.log("OK: página inicial sem títulos repetidos e com hierarquia funcional.");
