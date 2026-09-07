@@ -1,4 +1,4 @@
-const CACHE = "ecometrica-v92";
+const CACHE = "ecometrica-v93";
 const APP_SHELL = "./index.html";
 const ASSETS = [
   "./",
@@ -12,10 +12,11 @@ const ASSETS = [
   "./prisma.css?v=64",
   "./extraction.css?v=66",
   "./analytics.css?v=92",
+  "./validation.css?v=93",
   "./flow.css?v=64",
   "./help.css?v=69",
   "./topbar.css?v=69",
-  "./app.js?v=92",
+  "./app.js?v=93",
   "./manifest.webmanifest",
   "./icons/icon.svg",
   "./icons/decb-uern.png",
