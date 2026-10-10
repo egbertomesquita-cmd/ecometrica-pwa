@@ -10,6 +10,6 @@ assert.match(app,/color=CHART_PALETTE\[i%CHART_PALETTE\.length\]/,"Os nós devem
 assert.match(css,/\.network-nodes circle\{[^}]*opacity:1/,"Os nós não devem perder contraste por transparência.");
 assert.match(css,/repeating-linear-gradient\(135deg,#D55E00/,"A série esperada deve usar cor e textura, sem depender apenas da cor.");
 assert.match(css,/linear-gradient\(90deg,#313695 0%,#4575B4 20%,#74ADD1 40%,#FEE090 60%,#F46D43 80%,#A50026 100%\)/,"A legenda temporal deve corresponder à escala dos nós.");
-assert.match(app,/EcoMétrica 3\.0 · Versão 93/,"A versão pública deve ser 93.");
+assert.match(app,/EcoMétrica 3\.0 · Versão 94/,"A versão pública deve ser 94.");
 
 console.log("OK: contraste e redundância visual das escalas de gráficos validados.");
