@@ -10,6 +10,6 @@ assert.match(source,/e\.exclusionCriterion=data\.exclusionCriterion\|\|""/,"O cr
 assert.match(source,/name="evidence" required/,"Toda exclusão deve exigir evidência encontrada no texto completo.");
 assert.match(source,/e\.evidenceLocation=data\.evidenceLocation\|\|""/,"A localização da evidência deve ser auditável.");
 assert.match(source,/if\(decision==="exclude"\)return openEligibilityExclusion\(selectedId\)/,"O formulário só deve aparecer ao solicitar a exclusão.");
-assert.match(source,/EcoMétrica 3\.0 · Versão 94/,"A versão visível deve ser 94.");
+assert.match(source,/EcoMétrica 3\.0 · Versão 95/,"A versão visível deve ser 95.");
 
 console.log("OK: critérios do protocolo disponíveis e auditáveis na Elegibilidade.");
